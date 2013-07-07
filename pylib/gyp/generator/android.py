@@ -178,6 +178,8 @@ class AndroidMkWriter(object):
     # Module class and name.
     self.WriteLn('LOCAL_MODULE_CLASS := ' + self.android_class)
     self.WriteLn('LOCAL_MODULE := ' + self.android_module)
+    if self.android_class == "EXECUTABLES":
+      self.WriteLn('LOCAL_MODULE_FILENAME := ' + self.android_module)
     # Only emit LOCAL_MODULE_STEM if it's different to LOCAL_MODULE.
     # The library module classes fail if the stem is set. ComputeOutputParts
     # makes sure that stem == modulename in these cases.
